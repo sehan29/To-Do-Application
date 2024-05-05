@@ -55,8 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:backgroundTint="@color/fab"
-        app:maxImageSize="40dp"
-        >
+        app:maxImageSize="40dp">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
