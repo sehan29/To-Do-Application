@@ -10,29 +10,34 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeFragment extends Fragment {
 
+    private ListView listView;
+    private ItemAdapter adapter;
+    private List<Item> items;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        listView = view.findViewById(R.id.listViewTasks);
+        items = new ArrayList<>();
+        items.add(new Item("Web Application", "20-11-2024"));
+        items.add(new Item("Programming II", "20-11-2024"));
+        items.add(new Item("Mobile Application", "20-11-2024"));
+        items.add(new Item("Agile Methodology", "20-11-2024"));
+        items.add(new Item("Mini Project", "20-11-2024"));
+        items.add(new Item("Database Manipulation", "20-11-2024"));
+        // Add more items as needed
 
-        // Find the ListView by its ID
-        ListView listView = view.findViewById(R.id.listViewTasks);
-
-        // Sample data to display in the ListView
-        String[] tasks = {"Web Application Development", "Programming II", "Flutter", "Python Tutorial", "Android Learning", "LMS Dev", "Statistics"};
-
-        // Create an ArrayAdapter using the string array and a default list item layout
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, tasks);
-
-        // Set the adapter to the ListView
+        adapter = new ItemAdapter(getActivity(), items);
         listView.setAdapter(adapter);
+
+        return view;
     }
+
+
 }

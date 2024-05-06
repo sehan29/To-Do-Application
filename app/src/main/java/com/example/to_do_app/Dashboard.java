@@ -54,6 +54,10 @@ public class Dashboard extends AppCompatActivity {
 
                     loadfragment(new CompleteFragment(), false);
                 }
+                else if (itemId == R.id.all_task) {
+
+                    loadfragment(new AllTask(), false);
+                }
 
                 else {
                     loadfragment(new HomeFragment(),false);
@@ -94,10 +98,8 @@ public class Dashboard extends AppCompatActivity {
 
         if(isappintialied)
         {
-            Toast.makeText(this,"You Clicked On About",Toast.LENGTH_SHORT).show();
             fragmentTransaction.add(R.id.fragment,fragment);
         }else{
-            Toast.makeText(this,"You Clicked On About",Toast.LENGTH_SHORT).show();
             fragmentTransaction.replace(R.id.fragment,fragment);
         }
 
