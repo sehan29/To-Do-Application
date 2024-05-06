@@ -2,5 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- Colors added from feature_devinfo branch -->
+    <color name="fab">#0077b6</color>
+    <color name="border_1">#999999</color>
+    <!-- Color added from development branch -->
     <color name="button_color">#5F5CFF</color>
 </resources>
