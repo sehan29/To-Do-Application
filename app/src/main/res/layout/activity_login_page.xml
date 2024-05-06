@@ -109,7 +109,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button"
+                android:id="@+id/login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -132,7 +132,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button">
+                app:layout_constraintTop_toBottomOf="@+id/login_btn">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button5"

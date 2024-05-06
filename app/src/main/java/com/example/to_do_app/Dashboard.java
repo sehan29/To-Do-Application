@@ -11,10 +11,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -57,7 +59,6 @@ public class Dashboard extends AppCompatActivity {
         });
 
         loadfragment(new HomeFragment(),true);
-
 
 
     }

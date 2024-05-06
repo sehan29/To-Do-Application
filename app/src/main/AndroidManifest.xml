@@ -21,7 +21,14 @@
       <activity
             android:name=".AddTask"
             android:exported="false" />
-     
+        <activity
+            android:name=".Dashboard"
+            android:exported="false" />
+
+        <activity android:name=".DevProfile"
+            android:exported="false"/>
+
+        <activity
             android:name=".Splash_Screen"
             android:exported="true" >
 
@@ -31,8 +38,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Dashboard"
-            android:exported="true" />
+
     </application>
 </manifest>
