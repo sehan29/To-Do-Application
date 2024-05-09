@@ -16,6 +16,9 @@
             android:name=".Login_Page"
             android:exported="false" />
         <activity
+            android:name=".Registration"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
