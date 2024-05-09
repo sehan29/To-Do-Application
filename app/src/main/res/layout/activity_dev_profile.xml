@@ -152,7 +152,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/registration_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -217,9 +217,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="16dp"
+                    android:background="@drawable/gray_strock"
+
+                    android:backgroundTint="@color/buuton_edit"
                     android:text="Contact"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/imageView7"
                     app:layout_constraintStart_toStartOf="@+id/imageView7"
                     app:layout_constraintTop_toBottomOf="@+id/imageView7" />

@@ -7,4 +7,5 @@
     <color name="border_1">#999999</color>
     <!-- Color added from development branch -->
     <color name="button_color">#5F5CFF</color>
+    <color name="buuton_edit">#4267B2</color>
 </resources>

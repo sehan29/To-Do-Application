@@ -116,6 +116,9 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/roboto_bold"
+                android:background="@drawable/gray_strock"
+                android:backgroundTint="@color/buuton_edit"
+                android:textColor="@color/white"
                 android:text="Sign In"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -153,11 +156,11 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/registration_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Already Haven't an Account?"
+                android:text="Already Haven't an Account? Sign Up"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -174,7 +177,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                app:layout_constraintTop_toBottomOf="@+id/registration_id" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

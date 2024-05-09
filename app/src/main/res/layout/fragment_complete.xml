@@ -60,9 +60,11 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="16dp"
-                android:drawableStart="@drawable/outline_calendar_month_24"
+                android:drawableStart="@drawable/drawable_with_left_padding"
                 android:onClick="openStartDatePicker"
-                android:text="Select Start Date" />
+                android:text="Select Start Date"
+                android:background="@drawable/gray_strock"
+                />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/endDatePickerButton"
@@ -71,8 +73,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="16dp"
-                android:drawableStart="@drawable/outline_calendar_month_24"
+                android:drawableStart="@drawable/drawable_with_left_padding"
                 android:onClick="openEndDatePicker"
+                android:background="@drawable/gray_strock"
                 android:text="Select End Date" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -82,7 +85,11 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="19dp"
-                android:text="ADD TASK" />
+                android:background="@drawable/gray_strock"
+                android:backgroundTint="@color/buuton_edit"
+                android:text="ADD TASK"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
         </LinearLayout>
     </ScrollView>
 
