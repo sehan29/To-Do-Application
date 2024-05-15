@@ -10,13 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
 public class CompleteFragment extends Fragment {
 
     private DatePickerDialog startDatePickerDialog, endDatePickerDialog;
-    private Button startDateButton, endDateButton;
+    private Button startDateButton, endDateButton, add_btn;
+
+    EditText task_title,task_description;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,12 +29,28 @@ public class CompleteFragment extends Fragment {
 
         startDateButton = view.findViewById(R.id.startDatePickerButton);
         endDateButton = view.findViewById(R.id.endDatePickerButton);
+        task_title = view.findViewById(R.id.task_name);
+        task_description = view.findViewById(R.id.description);
+        add_btn = view.findViewById(R.id.add_btn_task);
 
         initDatePickers();
         setInitialDate();
 
         startDateButton.setOnClickListener(v -> startDatePickerDialog.show());
         endDateButton.setOnClickListener(v -> endDatePickerDialog.show());
+        add_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MydatabaseHelper myDB = new MydatabaseHelper(getContext());
+                myDB.addtask(task_title.getText().toString().trim(),
+                        task_description.getText().toString().trim(),
+                        "2023-34-45".toString().trim(),
+                        "2025-4-56".toString().trim());
+            }
+        });
+
+
 
         return view;
     }
@@ -92,4 +112,5 @@ public class CompleteFragment extends Fragment {
             default: return "JAN"; // Fallback to January
         }
     }
+
 }
