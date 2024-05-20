@@ -18,19 +18,29 @@ public class HomeFragment extends Fragment {
     private ListView listView;
     private ItemAdapter adapter;
     private List<Item> items;
+
+    private  MydatabaseHelper mydatabaseHelper;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         listView = view.findViewById(R.id.listViewTasks);
-        items = new ArrayList<>();
-        items.add(new Item("Web Application", "20-11-2024"));
-        items.add(new Item("Programming II", "20-11-2024"));
-        items.add(new Item("Mobile Application", "20-11-2024"));
-        items.add(new Item("Agile Methodology", "20-11-2024"));
-        items.add(new Item("Mini Project", "20-11-2024"));
-        items.add(new Item("Database Manipulation", "20-11-2024"));
+        mydatabaseHelper = new MydatabaseHelper(getActivity());
+
+        items = mydatabaseHelper.getHomeTasks();
+
+        adapter = new ItemAdapter(getActivity(), items);
+        listView.setAdapter(adapter);
+
+
+       // items = new ArrayList<>();
+        //items.add(new Item("Web Application", "20-11-2024"));
+       // items.add(new Item("Programming II", "20-11-2024"));
+        //items.add(new Item("Mobile Application", "20-11-2024"));
+       // items.add(new Item("Agile Methodology", "20-11-2024"));
+       // items.add(new Item("Mini Project", "20-11-2024"));
+        //items.add(new Item("Database Manipulation", "20-11-2024"));
         // Add more items as needed
 
         adapter = new ItemAdapter(getActivity(), items);
