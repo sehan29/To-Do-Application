@@ -30,8 +30,8 @@ public class HomeFragment extends Fragment {
 
         items = mydatabaseHelper.getHomeTasks();
 
-        adapter = new ItemAdapter(getActivity(), items);
-        listView.setAdapter(adapter);
+      //  adapter = new ItemAdapter(getActivity(), items);
+      //  listView.setAdapter(adapter);
 
 
        // items = new ArrayList<>();

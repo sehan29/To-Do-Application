@@ -2,11 +2,15 @@ package com.example.to_do_app;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MydatabaseHelper extends SQLiteOpenHelper {
 
@@ -67,4 +71,99 @@ public class MydatabaseHelper extends SQLiteOpenHelper {
             //Toast.makeText(context,"Faild1212",Toast.LENGTH_SHORT).show();
         }
     }
+
+    public List<Task> getAllTasks() {
+        List<Task> taskList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+        // Getting column indices with validation
+        int indexTitle = ((Cursor) cursor).getColumnIndex(COLUNM_TITLE);
+        int indexid = cursor.getColumnIndex(COLUNM_ID);
+        int indexDescription = cursor.getColumnIndex(COLUNM_DESCRIPTION);
+        int indexStartTime = cursor.getColumnIndex(COLUNM_START_TIME);
+        int indexEndTime = cursor.getColumnIndex(COLUNM_END_TIME);
+
+        // Check if any column index is -1, indicating the column name does not exist
+        if (indexid == -1 || indexTitle == -1 || indexDescription == -1 || indexStartTime == -1 || indexEndTime == -1) {
+            throw new IllegalArgumentException("One of the columns does not exist in the database.");
+        }
+
+        if (cursor.moveToFirst()) {
+            do {
+
+                String id = cursor.getString(indexid);
+                String title = cursor.getString(indexTitle);
+                String description = cursor.getString(indexDescription);
+                String startTime = cursor.getString(indexStartTime);
+                String endTime = cursor.getString(indexEndTime);
+
+                Task task = new Task(id,title, description, startTime, endTime);
+                taskList.add(task);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return taskList;
+    }
+
+    public Task getTask(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, new String[] { COLUNM_ID, COLUNM_TITLE, COLUNM_DESCRIPTION }, COLUNM_ID + "=?", new String[] {String.valueOf(id)}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        Task task = new Task(cursor.getString(0),cursor.getString(1), cursor.getString(2),"2024","2025");  // Assuming Task constructor takes title and description
+        cursor.close();
+        return task;
+    }
+
+    public void deleteTask(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME, COLUNM_ID + "=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    public void updateTask(int id, String title, String description) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUNM_TITLE, title);
+        cv.put(COLUNM_DESCRIPTION, description);
+
+        db.update(TABLE_NAME, cv, COLUNM_ID + "=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    public List<Item> getHomeTasks() {
+        List<Item> taskList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+        // Getting column indices with validation
+
+        int indexTitle = cursor.getColumnIndex(COLUNM_TITLE);
+        int indexDescription = cursor.getColumnIndex(COLUNM_DESCRIPTION);
+
+
+        // Check if any column index is -1, indicating the column name does not exist
+        if (indexTitle == -1 || indexDescription == -1) {
+            throw new IllegalArgumentException("One of the columns does not exist in the database.");
+        }
+
+        if (cursor.moveToFirst()) {
+            do {
+                String title = cursor.getString(indexTitle);
+                String description = cursor.getString(indexDescription);
+
+
+                Item task = new Item(title, description);
+                taskList.add(task);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return taskList;
+    }
+
 }
