@@ -88,6 +88,8 @@
                 android:ems="10"
                 android:hint="Enter Your Email"
                 android:inputType="text"
+                android:padding="15dp"
+                android:background="@drawable/gray_strock"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -104,6 +106,8 @@
                 android:ems="10"
                 android:hint="Enter Your Password"
                 android:inputType="textPassword"
+                android:padding="15dp"
+                android:background="@drawable/gray_strock"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
