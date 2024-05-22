@@ -58,7 +58,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
-
                         android:layout_marginTop="32dp"
                         android:text="12 - March - 2024"
                         android:textAlignment="textStart"

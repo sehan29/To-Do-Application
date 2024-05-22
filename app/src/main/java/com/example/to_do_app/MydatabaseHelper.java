@@ -15,7 +15,7 @@ import java.util.List;
 public class MydatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
-    private static final String DATABASE_NAME = "Tasks.db";
+    private static final String DATABASE_NAME = "Tasks1.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE_NAME = "mytask";
@@ -24,6 +24,14 @@ public class MydatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUNM_DESCRIPTION = "description";
     private static final String COLUNM_START_TIME = "st_time";
     private static final String COLUNM_END_TIME = "end_time";
+
+
+
+    // User Table
+    private static final String USER_TABLE_NAME = "users";
+    private static final String USER_COLUMN_ID = "_id";
+    private static final String USER_COLUMN_EMAIL = "email";
+    private static final String USER_COLUMN_PASSWORD = "password";
 
 
     public MydatabaseHelper(@Nullable Context context) {
@@ -41,15 +49,50 @@ public class MydatabaseHelper extends SQLiteOpenHelper {
                         COLUNM_DESCRIPTION + " TEXT, " +
                         COLUNM_START_TIME + " TEXT, " +
                         COLUNM_END_TIME + " TEXT);";
+
+        String createUserTableQuery =
+                "CREATE TABLE " + USER_TABLE_NAME +
+                        " (" + USER_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        USER_COLUMN_EMAIL + " TEXT, " +
+                        USER_COLUMN_PASSWORD + " TEXT);";
+
         db.execSQL(query);
+        db.execSQL(createUserTableQuery);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + USER_TABLE_NAME);
         onCreate(db);
     }
+
+    void addUser(String email, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(USER_COLUMN_EMAIL, email);
+        cv.put(USER_COLUMN_PASSWORD, password);
+
+        //Toast.makeText(context, password, Toast.LENGTH_SHORT).show();
+
+        long result = db.insert(USER_TABLE_NAME, null, cv);
+        if(result == -1) {
+            Toast.makeText(context, "Registration Failed", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Registered Successfully", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    boolean checkUser(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(USER_TABLE_NAME, null, USER_COLUMN_EMAIL + "=? AND " + USER_COLUMN_PASSWORD + "=?", new String[]{email, password}, null, null, null);
+        boolean userExists = cursor.getCount() > 0;
+        cursor.close();
+        return userExists;
+    }
+
 
     void addtask(String title,String description, String st_time, String end_time)
     {
@@ -164,6 +207,15 @@ public class MydatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return taskList;
+    }
+
+    public int getTasksCount() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String countQuery = "SELECT * FROM " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count;
     }
 
 }

@@ -2,24 +2,76 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
     android:layout_marginTop="80dp"
-    android:orientation="vertical">
+    android:layout_marginRight="16dp"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="User Name"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username" />
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/gray_strock"
+        android:hint="Username"
+        android:padding="14dp" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="About Me"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editTextAbout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/gray_strock"
+        android:hint="About Me"
+        android:padding="14dp" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="Birth Date"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextBirthdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Birthdate" />
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/gray_strock"
+        android:hint="Birthdate"
+        android:padding="14dp" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="Contact Number"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextContact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contact Number" />
+        android:background="@drawable/gray_strock"
+        android:hint="Contact Number"
+        android:padding="14dp" />
 </LinearLayout>
