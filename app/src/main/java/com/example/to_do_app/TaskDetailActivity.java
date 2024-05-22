@@ -74,7 +74,4 @@ public class TaskDetailActivity extends AppCompatActivity {
     }
 
 
-
-
-
 }
