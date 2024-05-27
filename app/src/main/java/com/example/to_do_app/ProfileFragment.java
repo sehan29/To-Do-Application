@@ -1,10 +1,17 @@
 package com.example.to_do_app;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,14 +19,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 public class ProfileFragment extends Fragment {
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private static final int STORAGE_PERMISSION_CODE = 2;
 
     private TextView textView2; // For username
     private TextView textView11; // For birthdate
     private TextView textView13; // For phone number
+    private ImageView profileImageView; // Profile picture
+
+    private Uri selectedImageUri;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,7 +43,9 @@ public class ProfileFragment extends Fragment {
 
         textView2 = view.findViewById(R.id.textView2); // For username
         textView11 = view.findViewById(R.id.textView11); // For birthdate
-        textView13 = view.findViewById(R.id.textView13);
+        textView13 = view.findViewById(R.id.textView13); // For phone number
+        profileImageView = view.findViewById(R.id.imageView2); // Profile picture
+
         // Find the Log Out button and set a click listener
         Button logoutButton = view.findViewById(R.id.buttonLogout);
         logoutButton.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +68,6 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
-
     private void showLogoutDialog() {
         // Create an AlertDialog to confirm log out
         new AlertDialog.Builder(getContext())
@@ -61,7 +76,6 @@ public class ProfileFragment extends Fragment {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // Perform the log out action
-                        // For example, you can clear user data or navigate to the login screen
                         performLogout();
                     }
                 })
@@ -72,11 +86,6 @@ public class ProfileFragment extends Fragment {
 
     private void performLogout() {
         // Add your log out logic here
-        // For example, clearing shared preferences, navigating to login screen, etc.
-
-        // Placeholder for clearing shared preferences (you can replace it with your actual logic)
-        // SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        // preferences.edit().clear().apply();
 
         // Create an Intent to start the LoginActivity
         Intent intent2 = new Intent(getContext(), Login_Page.class);
@@ -86,7 +95,6 @@ public class ProfileFragment extends Fragment {
         startActivity(intent2);
         // Finish the current activity (ProfileActivity or any other activity that contains the ProfileFragment)
         getActivity().finish();
-
     }
 
     private String currentUsername = "Sehan Hansaja Gamage";
@@ -102,11 +110,28 @@ public class ProfileFragment extends Fragment {
         EditText usernameEditText = view.findViewById(R.id.editTextUsername);
         EditText birthdateEditText = view.findViewById(R.id.editTextBirthdate);
         EditText contactEditText = view.findViewById(R.id.editTextContact);
+        ImageView editProfileImageView = view.findViewById(R.id.editProfileImageView);
+        Button changeProfilePictureButton = view.findViewById(R.id.changeProfilePictureButton);
 
         // Populate EditText fields with current profile details
         usernameEditText.setText(currentUsername);
         birthdateEditText.setText(currentBirthdate);
         contactEditText.setText(currentPhoneNumber);
+
+        if (selectedImageUri != null) {
+            editProfileImageView.setImageURI(selectedImageUri);
+        }
+
+        changeProfilePictureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+                } else {
+                    openImageChooser();
+                }
+            }
+        });
 
         builder.setView(view);
 
@@ -128,9 +153,24 @@ public class ProfileFragment extends Fragment {
         dialog.show();
     }
 
+    private void openImageChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == getActivity().RESULT_OK && data != null && data.getData() != null) {
+            selectedImageUri = data.getData();
+            showEditProfileDialog();
+        }
+    }
+
     private void updateProfile(String newUsername, String newBirthdate, String newPhoneNumber) {
         // Update the profile details with the new values
-        // For example, update the TextViews or the database
 
         // Update the current profile details
         currentUsername = newUsername;
@@ -141,5 +181,21 @@ public class ProfileFragment extends Fragment {
         textView2.setText(currentUsername);
         textView11.setText(currentBirthdate);
         textView13.setText(currentPhoneNumber);
+
+        if (selectedImageUri != null) {
+            profileImageView.setImageURI(selectedImageUri);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == STORAGE_PERMISSION_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openImageChooser();
+            } else {
+                Toast.makeText(getContext(), "Permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
