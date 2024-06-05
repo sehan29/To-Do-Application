@@ -129,46 +129,51 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
-                android:orientation="horizontal"
+                android:text="Continue with Google"
+                android:drawableStart="@drawable/logo_googleg_48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingLeft="60dp"
+                android:drawablePadding="-60dp"
+                android:background="@drawable/gray_strock"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_btn" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/gray_strock"
+                android:backgroundTint="@color/facebook_btn"
+                android:drawableStart="@drawable/path14"
+                android:drawablePadding="-60dp"
+                android:paddingLeft="60dp"
+                android:text="Continue with Facebook"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/login_btn">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:text="Google"
-                    android:drawableStart="@drawable/baseline_login_24"
-                    tools:layout_marginRight="10dp" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/baseline_login_24"
-                    android:text="Facebook" />
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/button3" />
 
             <TextView
                 android:id="@+id/registration_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="Already Haven't an Account? Sign Up"
                 android:textAlignment="center"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:layout_constraintTop_toBottomOf="@+id/button4"
                 tools:fontFamily="@font/roboto_regular" />
 
             <TextView

@@ -156,7 +156,7 @@ public class MydatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_NAME, new String[] { COLUNM_ID, COLUNM_TITLE, COLUNM_DESCRIPTION }, COLUNM_ID + "=?", new String[] {String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
-        Task task = new Task(cursor.getString(0),cursor.getString(1), cursor.getString(2),"2024","2025");  // Assuming Task constructor takes title and description
+        Task task = new Task(cursor.getString(0),cursor.getString(1), cursor.getString(2),"2024:6:6","2024:6:6");  // Assuming Task constructor takes title and description
         cursor.close();
         return task;
     }
