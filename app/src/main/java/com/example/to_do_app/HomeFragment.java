@@ -9,15 +9,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
     private ListView listView;
     private ItemAdapter adapter;
     private List<Item> items;
+
+
 
     private  MydatabaseHelper mydatabaseHelper;
     @Override
@@ -45,6 +51,16 @@ public class HomeFragment extends Fragment {
 
         adapter = new ItemAdapter(getActivity(), items);
         listView.setAdapter(adapter);
+
+        TextView textViewDate = view.findViewById(R.id.textView5);
+        String currentDate = new SimpleDateFormat("dd - MMMM - yyyy", Locale.getDefault()).format(new Date());
+        textViewDate.setText(currentDate);
+
+        // Set the text of the TextView with the number of scheduled tasks
+        TextView textViewScheduledTasks = view.findViewById(R.id.textView6);
+        int scheduledTasksCount = mydatabaseHelper.getTasksCount();
+        String scheduledTasksText = "Scheduled Task - " + scheduledTasksCount;
+        textViewScheduledTasks.setText(scheduledTasksText);
 
         return view;
     }
