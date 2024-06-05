@@ -51,6 +51,6 @@ To run this application locally, follow these steps:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/todo-application.git
+   https://github.com/sehan29/To-Do-Application.git
 
   
