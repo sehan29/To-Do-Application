@@ -7,9 +7,6 @@ Welcome to the Todo Application! This app is designed to help you manage your ta
 - [Features](#features)
 - [Screens](#screens)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Contact](#contact)
 
 ## Features
 
@@ -52,5 +49,17 @@ To run this application locally, follow these steps:
 1. **Clone the repository**
    ```bash
    https://github.com/sehan29/To-Do-Application.git
+
+2. **Open in Android Studio**
+   - Open Android Studio.
+   - Select File -> Open and navigate to the cloned project directory.
+     
+3. **Build the Project**
+   - Click on Build -> Make Project to build the project and download necessary dependencies.
+  
+4. **Run the Application**
+   - Connect an Android device or start an emulator.
+   - Click on Run -> Run 'app'.
+     
 
   
