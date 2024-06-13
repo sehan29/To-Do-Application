@@ -1,0 +1,5 @@
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/logo_googleg_48dp"
+    android:insetLeft="10dp">
+    <!-- This inset adds 10dp padding on the left side of the drawable -->
+</inset>

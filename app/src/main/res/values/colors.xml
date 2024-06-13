@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- Colors added from feature_devinfo branch -->
+    <color name="fab">#0077b6</color>
+    <color name="border_1">#999999</color>
+    <!-- Color added from development branch -->
+    <color name="button_color">#5F5CFF</color>
+    <color name="buuton_edit">#4267B2</color>
+    <color name="delete_btn">#d11a2a</color>
+    <color name="facebook_btn">#1877F2</color>
 </resources>

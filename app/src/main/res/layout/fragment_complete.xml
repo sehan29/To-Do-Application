@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CompleteFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="ADD NEW TASK"
+                android:textAlignment="center"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/task_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:hint="Enter Task Name"
+                android:inputType="text"
+                android:padding="12dp"
+                android:background="@drawable/gray_strock"/>
+
+            <EditText
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:hint="Enter Description"
+                android:inputType="text"
+                android:padding="12dp"
+                android:background="@drawable/gray_strock"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/startDatePickerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:drawableStart="@drawable/drawable_with_left_padding"
+                android:onClick="openStartDatePicker"
+                android:text="Select Start Date"
+                android:background="@drawable/gray_strock"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/endDatePickerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:drawableStart="@drawable/drawable_with_left_padding"
+                android:onClick="openEndDatePicker"
+                android:background="@drawable/gray_strock"
+                android:text="Select End Date" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/add_btn_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="19dp"
+                android:background="@drawable/gray_strock"
+                android:backgroundTint="@color/buuton_edit"
+                android:text="ADD TASK"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/add_btn_img"
+                android:drawablePadding="-80dp"
+                android:paddingLeft="80dp"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</FrameLayout>

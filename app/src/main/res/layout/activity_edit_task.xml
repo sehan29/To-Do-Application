@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditTaskActivity"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Task Trove"
+        app:titleMarginStart="16dp">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textViewTaskDescription4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Task Title"
+                android:textSize="16sp"
+                android:layout_marginLeft="10dp"/>
+
+            <EditText
+                android:id="@+id/editTextTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title"
+                android:textSize="18sp"
+                android:padding="10sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/gray_strock"/>
+
+            <TextView
+                android:id="@+id/textViewTaskDescription9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Task Description"
+                android:textSize="16sp"
+                android:layout_marginLeft="10dp"/>
+
+            <EditText
+                android:id="@+id/editTextDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="Description"
+                android:textSize="18sp"
+                android:padding="10sp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/gray_strock"/>
+
+            <TextView
+                android:id="@+id/textViewTaskDescription7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Task Start Date"
+                android:textSize="16sp"
+                android:layout_marginLeft="10dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/startDatePickerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:drawableStart="@drawable/drawable_with_left_padding"
+                android:onClick="openStartDatePicker"
+                android:text="Select Start Date"
+                android:background="@drawable/gray_strock"
+                />
+
+            <TextView
+                android:id="@+id/textViewTaskDescription6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Task End Date"
+                android:textSize="16sp"
+                android:layout_marginLeft="10dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/endDatePickerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:drawableStart="@drawable/drawable_with_left_padding"
+                android:onClick="openEndDatePicker"
+                android:background="@drawable/gray_strock"
+                android:text="Select End Date" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonSaveChanges"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Save Changes"
+                android:background="@drawable/gray_strock"
+                android:backgroundTint="@color/buuton_edit"
+                android:drawableStart="@drawable/add_btn_img"
+                android:drawablePadding="-80dp"
+                android:paddingLeft="70dp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
