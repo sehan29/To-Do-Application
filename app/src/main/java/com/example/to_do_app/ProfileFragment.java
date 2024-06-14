@@ -31,6 +31,8 @@ public class ProfileFragment extends Fragment {
     private TextView textView2; // For username
     private TextView textView11; // For birthdate
     private TextView textView13; // For phone number
+
+    private TextView textView9; // For phone number
     private ImageView profileImageView; // Profile picture
 
     private Uri selectedImageUri;
@@ -44,6 +46,8 @@ public class ProfileFragment extends Fragment {
         textView2 = view.findViewById(R.id.textView2); // For username
         textView11 = view.findViewById(R.id.textView11); // For birthdate
         textView13 = view.findViewById(R.id.textView13); // For phone number
+        textView9 = view.findViewById(R.id.textView9);
+
         profileImageView = view.findViewById(R.id.imageView2); // Profile picture
 
         // Find the Log Out button and set a click listener
@@ -97,9 +101,11 @@ public class ProfileFragment extends Fragment {
         getActivity().finish();
     }
 
-    private String currentUsername = "Sehan Hansaja Gamage";
-    private String currentBirthdate = "29 - November - 2001";
-    private String currentPhoneNumber = "+94 70 287 6795";
+    private String currentUsername = "Enter Your Name";
+    private String currentBirthdate = "Enter Your Birthdate";
+    private String currentPhoneNumber = "Enter Your Mobile Number";
+
+    String discription_1 = "Enter About You";
 
     private void showEditProfileDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -110,6 +116,7 @@ public class ProfileFragment extends Fragment {
         EditText usernameEditText = view.findViewById(R.id.editTextUsername);
         EditText birthdateEditText = view.findViewById(R.id.editTextBirthdate);
         EditText contactEditText = view.findViewById(R.id.editTextContact);
+        EditText description = view.findViewById(R.id.editTextAbout);
         ImageView editProfileImageView = view.findViewById(R.id.editProfileImageView);
         Button changeProfilePictureButton = view.findViewById(R.id.changeProfilePictureButton);
 
@@ -117,6 +124,7 @@ public class ProfileFragment extends Fragment {
         usernameEditText.setText(currentUsername);
         birthdateEditText.setText(currentBirthdate);
         contactEditText.setText(currentPhoneNumber);
+        description.setText(discription_1);
 
         if (selectedImageUri != null) {
             editProfileImageView.setImageURI(selectedImageUri);
@@ -142,9 +150,11 @@ public class ProfileFragment extends Fragment {
                 String newUsername = usernameEditText.getText().toString();
                 String newBirthdate = birthdateEditText.getText().toString();
                 String newPhoneNumber = contactEditText.getText().toString();
+                String newDescription = description.getText().toString();
+
 
                 // Update the profile details
-                updateProfile(newUsername, newBirthdate, newPhoneNumber);
+                updateProfile(newUsername, newBirthdate, newPhoneNumber,newDescription);
             }
         });
         builder.setNegativeButton("Cancel", null);
@@ -169,18 +179,21 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    private void updateProfile(String newUsername, String newBirthdate, String newPhoneNumber) {
+    private void updateProfile(String newUsername, String newBirthdate, String newPhoneNumber,String description) {
         // Update the profile details with the new values
 
         // Update the current profile details
         currentUsername = newUsername;
         currentBirthdate = newBirthdate;
         currentPhoneNumber = newPhoneNumber;
+        discription_1 = description;
 
         // Update the TextViews with the new values
         textView2.setText(currentUsername);
         textView11.setText(currentBirthdate);
         textView13.setText(currentPhoneNumber);
+        textView9.setText(discription_1);
+
 
         if (selectedImageUri != null) {
             profileImageView.setImageURI(selectedImageUri);
